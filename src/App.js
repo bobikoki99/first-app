@@ -1,25 +1,60 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Nav from './Components/Nav.js';
+import About from './Components/About.js';
+import Counter from './Components/Counter.js';
+import Home from './Components/Home.js';
+import BookShop from './Components/BookShop.js'
+import Book from './Components/Book.js'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+
 
 function App() {
+
+  /*const [ data, setData ] = useState('');
+  const [ weight, setWeight ] = useState(0);
+  const [ color, setColor] = useState(randomcolor());
+
+  function clickHandeler () 
+  {
+    setData(function () {
+      if(Users.hasOwnProperty(document.getElementById('input').value)){
+
+        const tempDate = Users[document.getElementById('input').value].Weight[0][0];
+
+        return tempDate;
+      }
+      return 'Nqma takova chave';
+    })
+    setWeight(function () {
+      if(Users.hasOwnProperty(document.getElementById('input').value)){
+
+        const tempWeight = Users[document.getElementById('input').value].Weight[1][0];
+
+        return tempWeight;
+      }
+      return '';
+    })
+  }
+
+  useEffect(() => {
+    setColor(randomcolor())
+    return (() => console.log(45))
+  },[data]);*/
+
   return (
+    <Router>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Nav />
+      <Switch>
+      <Route path='/' exact component={Home} />
+      <Route path='/bookshop' exact component={BookShop} />
+      <Route path='/about' component={About}/>
+      <Route path='/counter' component={Counter}/>
+      <Route path='/bookshop/:id' component={Book} />
+      </Switch>
     </div>
+    </Router>
   );
 }
 
